@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+  </head>
+  <body>
+    <span style="color: #f00">结果仅供参考！！！</span>
+    <br />
+    <input type="text" maxlength="3" id="code" />
+    <span id="codeanswer"></span>
+  </body>
+</html>
+<script>
+  var codeArr = [
+    { key: "CTW", value: "5" },
+    { key: "KSX", value: "10" },
+    { key: "DPT", value: "15" },
+    { key: "ARS", value: "20" },
+    { key: "BHJ", value: "30" },
+    { key: "CPS", value: "40" },
+    { key: "CYZ", value: "50" },
+    { key: "DRV", value: "60" },
+    { key: "FQW", value: "70" },
+    { key: "CLO", value: "80" },
+    { key: "ANO", value: "90" },
+    { key: "ERW", value: "100" },
+    { key: "ALM", value: "200" },
+    { key: "BQS", value: "300" },
+    { key: "GKL", value: "450" },
+    { key: "DSW", value: "500" },
+    { key: "BPR", value: "600" },
+    { key: "JSY", value: "700" },
+    { key: "GPW", value: "800" },
+    { key: "AJK", value: "900" },
+    { key: "DQU", value: "1000" },
+    { key: "EJO", value: "1500" },
+    { key: "BTV", value: "2000" },
+  ];
+
+  var tcCodeArr = [
+    { key: "ZRB", value: "5" },
+    { key: "CKV", value: "10" },
+    { key: "FEQ", value: "20" },
+    { key: "LUE", value: "30" },
+    { key: "KIN", value: "40" },
+    { key: "KGI", value: "50" },
+    { key: "LVS", value: "60" },
+    { key: "FMB", value: "70" },
+    { key: "JZD", value: "80" },
+    { key: "DSP", value: "90" },
+    { key: "FMR", value: "100" },
+    { key: "JNS", value: "200" },
+    { key: "JIN", value: "300" },
+    { key: "NEX", value: "400" },
+    { key: "HQU", value: "500" },
+    { key: "EMO", value: "600" },
+    { key: "APG", value: "700" },
+    { key: "HUA", value: "800" },
+    { key: "HIV", value: "900" },
+    { key: "YAO", value: "1000" },
+    { key: "WBK", value: "1200" },
+    { key: "APV", value: "1500" },
+    { key: "CHE", value: "1600" },
+    { key: "TMK", value: "2000" },
+    { key: "BLT", value: "3000" },
+    { key: "ZEM", value: "4000" },
+  ];
+
+  for (var i = 0; i < codeArr.length; i++) {
+    codeArr[i].key = codeArr[i].key.toLowerCase().split("").sort().join("");
+  }
+
+  var answer = "";
+  $(function () {
+    $("#code").focus();
+    $("#code").on("input", function () {
+      answer = $("#code").val();
+      console.log(answer);
+      for (var i = 0; i < codeArr.length; i++) {
+        if (codeArr[i].key == answer.toLowerCase().split("").sort().join("")) {
+          $("#codeanswer").html(codeArr[i].value);
+          break;
+        } else {
+          $("#codeanswer").html(0);
+        }
+      }
+    });
+  });
+</script>
