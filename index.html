@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>search</title>
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
   </head>
   <body>
@@ -14,7 +14,7 @@
   </body>
 </html>
 <script>
-  var codeArr = [
+  var fccodeArr = [
     { key: "CTW", value: "5" },
     { key: "KSX", value: "10" },
     { key: "DPT", value: "15" },
@@ -40,7 +40,7 @@
     { key: "BTV", value: "2000" },
   ];
 
-  var tcCodeArr = [
+  var tccodeArr = [
     { key: "ZRB", value: "5" },
     { key: "CKV", value: "10" },
     { key: "FEQ", value: "20" },
@@ -69,22 +69,44 @@
     { key: "ZEM", value: "4000" },
   ];
 
-  for (var i = 0; i < codeArr.length; i++) {
-    codeArr[i].key = codeArr[i].key.toLowerCase().split("").sort().join("");
+  for (var i = 0; i < fccodeArr.length; i++) {
+    fccodeArr[i].key = fccodeArr[i].key.toLowerCase().split("").sort().join("");
+  }
+
+  for (var i = 0; i < tccodeArr.length; i++) {
+    tccodeArr[i].key = tccodeArr[i].key.toLowerCase().split("").sort().join("");
   }
 
   var answer = "";
   $(function () {
     $("#code").focus();
     $("#code").on("input", function () {
+      $("#codeanswer").html("");
+
       answer = $("#code").val();
       console.log(answer);
-      for (var i = 0; i < codeArr.length; i++) {
-        if (codeArr[i].key == answer.toLowerCase().split("").sort().join("")) {
-          $("#codeanswer").html(codeArr[i].value);
-          break;
-        } else {
-          $("#codeanswer").html(0);
+
+      for (var i = 0; i < fccodeArr.length; i++) {
+        if (
+          fccodeArr[i].key.includes(
+            answer.toLowerCase().split("").sort().join("")
+          )
+        ) {
+          $("#codeanswer").append(
+            "<br/>福-" + fccodeArr[i].key + ":" + fccodeArr[i].value
+          );
+        }
+      }
+
+      for (var i = 0; i < tccodeArr.length; i++) {
+        if (
+          tccodeArr[i].key.includes(
+            answer.toLowerCase().split("").sort().join("")
+          )
+        ) {
+          $("#codeanswer").append(
+            "<br/>体-" + tccodeArr[i].key + ":" + tccodeArr[i].value
+          );
         }
       }
     });
