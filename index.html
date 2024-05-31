@@ -8,7 +8,7 @@
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
   </head>
   <body>
-    <span style="color: #f00">结果仅供参考！！！</span>
+    <span style="color: #f00">结果仅供参考！！！,要输入3位数才行</span>
     <br />
     <input type="text" maxlength="3" id="code" />
     <span id="codeanswer"></span>
@@ -85,6 +85,9 @@
       $("#codeanswer").html("");
 
       answer = $("#code").val();
+      if (answer.length != 3) {
+        return;
+      }
       console.log(answer);
 
       for (var i = 0; i < fccodeArr.length; i++) {
